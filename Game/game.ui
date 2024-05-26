@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GameClass</class>
+ <widget class="QWidget" name="GameClass">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1022</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Game</string>
+  </property>
+  <widget class="QWidget" name="widget_game_deck" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>1080</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:#191919;</string>
+   </property>
+   <widget class="QWidget" name="widget_preview_card" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>316</width>
+      <height>460</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(39,39,39,100);
+ border: 2px solid #EE8235;
+ border-radius:5px;</string>
+    </property>
+    <widget class="QLabel" name="label_preview_card">
+     <property name="geometry">
+      <rect>
+       <x>18</x>
+       <y>27</y>
+       <width>280</width>
+       <height>406</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> border:none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_card_des" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>530</y>
+      <width>560</width>
+      <height>498</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#272727;
+ border-radius:5px;</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="game.qrc"/>
+ </resources>
+ <connections/>
+</ui>
