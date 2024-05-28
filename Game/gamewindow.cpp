@@ -16,7 +16,9 @@ namespace GameClient {
 
     void GameWindow::SetDeckWinodw() {
         SetWidgetShadow(ui.widget_card_des,QColor(115, 115, 122));
-       
+        SetWidgetShadow(ui.button_exit,QColor(115, 115, 122));
+        SetWidgetShadow(ui.widget_deck_manage,QColor(115, 115, 122));
+        SetWidgetShadow(ui.widget_card_properties,QColor(115, 115, 122));
     }
 
     /// <summary>

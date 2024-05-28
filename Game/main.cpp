@@ -15,6 +15,7 @@ void SetWindowCenTer(QWidget* window) {
     int x = (screenWidth - window->width()) / 2;
     int y = (screenHeight - window->height()) / 2;
     window->move(x, y);
+
 }
 
 int main(int argc, char *argv[]) {

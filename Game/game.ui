@@ -73,6 +73,51 @@
  border-radius:5px;</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="button_exit">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>10</y>
+      <width>165</width>
+      <height>110</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#272727;
+ border-radius:3px;</string>
+    </property>
+    <property name="text">
+     <string>退出编辑</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_deck_manage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>10</y>
+      <width>560</width>
+      <height>205</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#272727;
+ border-radius:5px;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_card_properties" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1155</x>
+      <y>10</y>
+      <width>760</width>
+      <height>205</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#272727;
+ border-radius:5px;</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
