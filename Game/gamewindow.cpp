@@ -15,10 +15,15 @@ namespace GameClient {
     }
 
     void GameWindow::SetDeckWinodw() {
-        SetWidgetShadow(ui.widget_card_des,QColor(115, 115, 122));
+        SetWidgetShadow(ui.widget_card_des,QColor(62, 62, 62));
+        SetWidgetShadow(ui.widget_deck_manage,QColor(62, 62, 62));
+        SetWidgetShadow(ui.widget_card_properties,QColor(62, 62, 62));
+
         SetWidgetShadow(ui.button_exit,QColor(115, 115, 122));
-        SetWidgetShadow(ui.widget_deck_manage,QColor(115, 115, 122));
-        SetWidgetShadow(ui.widget_card_properties,QColor(115, 115, 122));
+        SetWidgetShadow(ui.button_manage,QColor(115, 115, 122),false,1);
+        SetWidgetShadow(ui.button_save,QColor(115, 115, 122),false,1);
+        SetWidgetShadow(ui.button_saveas,QColor(115, 115, 122),false,1);
+        SetWidgetShadow(ui.button_delete,QColor(115, 115, 122),false,1);
     }
 
     /// <summary>

@@ -17,6 +17,9 @@
    <string>Game</string>
   </property>
   <widget class="QWidget" name="widget_game_deck" native="true">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -31,15 +34,15 @@
    <widget class="QWidget" name="widget_preview_card" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>8</x>
+      <y>8</y>
       <width>316</width>
       <height>460</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color:rgba(39,39,39,100);
- border: 2px solid #EE8235;
+ border: 2px solid #3E3E3E;
  border-radius:5px;</string>
     </property>
     <widget class="QLabel" name="label_preview_card">
@@ -62,9 +65,9 @@
    <widget class="QWidget" name="widget_card_des" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>8</x>
       <y>530</y>
-      <width>560</width>
+      <width>552</width>
       <height>498</height>
      </rect>
     </property>
@@ -83,8 +86,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:#272727;
- border-radius:3px;</string>
+     <string notr="true">background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+ border-radius:5px;</string>
     </property>
     <property name="text">
      <string>退出编辑</string>
@@ -103,6 +106,124 @@
      <string notr="true">background-color:#272727;
  border-radius:5px;</string>
     </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>53</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>卡组分类：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>53</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>卡组列表：</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>10</y>
+       <width>200</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #4B4B54;
+border-radius: 5px;</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>默认</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>人机</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="button_manage">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>9</y>
+       <width>125</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+ border-radius:3px;</string>
+     </property>
+     <property name="text">
+      <string>管理</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_save">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>58</y>
+       <width>125</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+ border-radius:3px;</string>
+     </property>
+     <property name="text">
+      <string>保存</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_saveas">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>107</y>
+       <width>125</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+ border-radius:3px;</string>
+     </property>
+     <property name="text">
+      <string>另存</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_delete">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>156</y>
+       <width>125</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+ border-radius:3px;</string>
+     </property>
+     <property name="text">
+      <string>删除</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="widget_card_properties" native="true">
     <property name="geometry">
