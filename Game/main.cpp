@@ -1,3 +1,8 @@
+/*
+创建人：神数不神
+创建日期：2024-5-24
+无修正
+*/
 #include "gamewindow.h"
 #include <QScreen>
 #include <QtWidgets/QApplication>
@@ -22,6 +27,6 @@ int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     GameWindow* w = new GameWindow;
     SetWindowCenTer(w);
-    w->show();
+    w->showMaximized();
     return a.exec();
 }

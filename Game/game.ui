@@ -224,6 +224,57 @@ border-radius: 5px;</string>
       <string>删除</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="button_disruption">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>156</y>
+       <width>100</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+ border-radius:3px;</string>
+     </property>
+     <property name="text">
+      <string>打乱</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_sort">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>156</y>
+       <width>100</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+ border-radius:3px;</string>
+     </property>
+     <property name="text">
+      <string>排序</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_empty">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>156</y>
+       <width>100</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+ border-radius:3px;</string>
+     </property>
+     <property name="text">
+      <string>清空</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="widget_card_properties" native="true">
     <property name="geometry">
