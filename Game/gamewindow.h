@@ -8,7 +8,7 @@
 #include <QFont>
 #include <QMap>
 #include "ui_game.h"
-#include "Enum/enumType.h"
+#include "Enum/enumtype.h"
 
 namespace GameClient { 
     using namespace GameClient::GameEnum;
@@ -30,6 +30,7 @@ namespace GameClient {
         void SetWidgetMap();
         void SetWidgetShadow(QWidget* widget, const QColor& color, bool inverted = false, qint32 size = 2);
         void SetWidgetFont(QWidget* widget,qint32 size);
+        qint32 GetComboBoxTextCenterValue(QComboBox* comboBox);
         WidgetInfo GetWidgetInfo(QObject* widget);
         QFont LoadFont(LanguageType ltype,FontType fType);
         QString rootPath;//³ÌÐò¸ùÄ¿Â¼

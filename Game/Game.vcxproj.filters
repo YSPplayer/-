@@ -42,10 +42,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enum\enumType.h">
+    <ClInclude Include="Enum\enumtype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tag\dfwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\cdelegate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

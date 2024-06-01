@@ -96,7 +96,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enum\enumType.h" />
+    <ClInclude Include="Component\cdelegate.h" />
+    <ClInclude Include="Enum\enumtype.h" />
     <ClInclude Include="Tag\dfwindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

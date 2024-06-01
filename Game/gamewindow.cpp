@@ -6,9 +6,12 @@
 #include "gamewindow.h"
 #include <QGraphicsDropShadowEffect>
 #include <QFontDatabase>
+#include <QBuffer>
 #include "Tag/dfwindow.h"
+#include "Component/cdelegate.h"
 namespace GameClient { 
     using namespace GameClient::Tag;
+    using namespace GameClient::Component;
     GameWindow::GameWindow(QWidget *parent)
         : QWidget(parent) {
         rootPath = QCoreApplication::applicationDirPath();
@@ -33,6 +36,9 @@ namespace GameClient {
             if(!widget) continue;
             const WidgetInfo& info = GetWidgetInfo(widget);
             quint8 itype = info.type;
+            qint32 fsize = 10;
+            if(fType == FontType::YoungRound_CN) fsize = 14;
+            if(itype != GAME_WIDGET_COMMON) SetWidgetFont(widget,fsize);
             if(itype == GAME_WIDGET_COMMON) {
                 SetWidgetShadow(widget,QColor(62, 62, 62));
             } else if(itype == GAME_BUTTON_COMMON) {
@@ -42,13 +48,31 @@ namespace GameClient {
                 } else {
                     SetWidgetShadow(widget,cLightGrey,false,1);
                 }
-                qint32 fsize = 10;
-                if(fType == FontType::YoungRound_CN) fsize = 14;
-                SetWidgetFont(widget,fsize);
                 widget->setStyleSheet(R"(QPushButton { color: rgb(199, 195, 195);
                                             background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
                                              border-radius:3px;                    
  })");
+            } else if(itype == GAME_LABEL_COMMON) {
+                widget->setStyleSheet("QLabel { color: rgb(199, 195, 195);}");
+            } else if(itype == GAME_COMBOX_COMMON) {
+                QComboBox* comboBox = qobject_cast<QComboBox*>(widget);
+                if (!comboBox) continue;
+                SetWidgetShadow(comboBox,QColor(115, 115, 122),false,1);
+                comboBox->setStyleSheet(QString(R"(QComboBox { border-radius: 5px;background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727); padding-left:%1px; color:rgb(199, 195, 195);}
+                QComboBox::drop-down {width: 40px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;}
+                QComboBox::down-arrow { image: url(%2); background-position: center;background-repeat: no-repeat;}
+                QComboBox QAbstractItemView { border:none; color:rgb(199, 195, 195); background-color: #4B4B54;}
+                )").arg(QString::number(GetComboBoxTextCenterValue(comboBox))).arg(rootPath + "/Resources/UI/arrowDown.png"));
+                auto delegate = new ComboBoxDelegate();
+                delegate->SetFont(&font, 13);
+                delegate->SetSelectColor(QColor(240, 126, 51));
+                delegate->SetItemHeight(30);
+                comboBox->setItemDelegate(delegate);
+            } else if(itype == GAME_LINEEDIT_COMMON) {
+                SetWidgetShadow(widget,QColor(115, 115, 122),false,1);
+                widget->setStyleSheet(R"(QLineEdit { color: rgb(199, 195, 195);
+                                            background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
+                                             border-radius:3px;})");
             }
         }
     }
@@ -69,6 +93,14 @@ namespace GameClient {
         widgetMap[ui.button_disruption] = { GAME_BUTTON_COMMON,reinterpret_cast<QWidget**>(&ui.button_disruption) };
         widgetMap[ui.button_sort] = { GAME_BUTTON_COMMON,  reinterpret_cast<QWidget**>(&ui.button_sort) };
         widgetMap[ui.button_empty] = { GAME_BUTTON_COMMON, reinterpret_cast<QWidget**>(&ui.button_empty) };
+
+        widgetMap[ui.label_deck_class] = { GAME_LABEL_COMMON,  reinterpret_cast<QWidget**>(&ui.label_deck_class) };
+        widgetMap[ui.label_deck_list] = { GAME_LABEL_COMMON, reinterpret_cast<QWidget**>(&ui.label_deck_list) };
+
+        widgetMap[ui.comboBox_deck_class] = { GAME_COMBOX_COMMON, reinterpret_cast<QWidget**>(&ui.comboBox_deck_class) };
+        widgetMap[ui.comboBox_deck_list] = { GAME_COMBOX_COMMON, reinterpret_cast<QWidget**>(&ui.comboBox_deck_list) };
+
+        widgetMap[ui.lineEdit_saveas] = { GAME_LINEEDIT_COMMON, reinterpret_cast<QWidget**>(&ui.lineEdit_saveas) };
     }
 
     /// <summary>
@@ -95,6 +127,19 @@ namespace GameClient {
         font.setPointSize(size);
         font.setBold(false);
         widget->setFont(font);
+    }
+
+    /// <summary>
+    /// 获取comboBox组件文本居中的位置
+    /// </summary>
+    /// <param name="comboBox"></param>
+    /// <returns></returns>
+    qint32 GameWindow::GetComboBoxTextCenterValue(QComboBox* comboBox) {
+        qint32 pleft = 0;
+        QFontMetrics metrics(comboBox->font());
+        qint32 pixelWidth  = metrics.horizontalAdvance(comboBox->currentText());
+        //30 是图片与间隔的合计大小
+        return (comboBox->width() - 30 - pixelWidth) / 2;
     }
 
     /// <summary>
