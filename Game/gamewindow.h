@@ -27,6 +27,7 @@ namespace GameClient {
         QMap<QObject*, WidgetInfo> widgetMap;
         Ui::GameClass ui;
         void SetDeckWinodw();
+        void SetWidgetState(quint8 wtype,quint8 stype,QWidget* widget, qint32 size = 2);
         void SetWidgetMap();
         void SetWidgetShadow(QWidget* widget, const QColor& color, bool inverted = false, qint32 size = 2);
         void SetWidgetFont(QWidget* widget,qint32 size);
