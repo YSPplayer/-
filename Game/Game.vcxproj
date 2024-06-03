@@ -92,11 +92,15 @@
     <QtRcc Include="game.qrc" />
     <QtUic Include="game.ui" />
     <QtMoc Include="gamewindow.h" />
+    <ClCompile Include="Component\deckeditcontainer.cpp" />
+    <ClCompile Include="Component\imagecard.cpp" />
     <ClCompile Include="gamewindow.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\cdelegate.h" />
+    <QtMoc Include="Component\imagecard.h" />
+    <ClInclude Include="Component\deckeditcontainer.h" />
     <ClInclude Include="Enum\enumtype.h" />
     <ClInclude Include="Tag\dfwindow.h" />
   </ItemGroup>

@@ -135,6 +135,7 @@ namespace GameClient {
         widgetMap[ui.label_main_deck_text] = { GAME_COMPONENT_LABEL, reinterpret_cast<QWidget**>(&ui.label_main_deck_text) };
         widgetMap[ui.label_extra_deck_text] = { GAME_COMPONENT_LABEL, reinterpret_cast<QWidget**>(&ui.label_extra_deck_text) };
         widgetMap[ui.label_second_deck_text] = { GAME_COMPONENT_LABEL, reinterpret_cast<QWidget**>(&ui.label_second_deck_text) };
+        widgetMap[ui.label_search_text] = { GAME_COMPONENT_LABEL, reinterpret_cast<QWidget**>(&ui.label_search_text) };
 
         widgetMap[ui.comboBox_deck_class] = { GAME_COMPONENT_COMBOX, reinterpret_cast<QWidget**>(&ui.comboBox_deck_class) };
         widgetMap[ui.comboBox_deck_list] = { GAME_COMPONENT_COMBOX, reinterpret_cast<QWidget**>(&ui.comboBox_deck_list) };
@@ -144,6 +145,7 @@ namespace GameClient {
         widgetMap[ui.comboBox_deck_race] = { GAME_COMPONENT_COMBOX, reinterpret_cast<QWidget**>(&ui.comboBox_deck_race) };
         widgetMap[ui.comboBox_deck_star] = { GAME_COMPONENT_COMBOX, reinterpret_cast<QWidget**>(&ui.comboBox_deck_star) };
         widgetMap[ui.comboBox_deck_forbid] = { GAME_COMPONENT_COMBOX, reinterpret_cast<QWidget**>(&ui.comboBox_deck_forbid) };
+        widgetMap[ui.comboBox_deck_search_sort] = { GAME_COMPONENT_COMBOX, reinterpret_cast<QWidget**>(&ui.comboBox_deck_search_sort) };
 
         widgetMap[ui.lineEdit_saveas] = { GAME_COMPONENT_LINEEDIT, reinterpret_cast<QWidget**>(&ui.lineEdit_saveas) };
         widgetMap[ui.lineEdit_keyword] = { GAME_COMPONENT_LINEEDIT, reinterpret_cast<QWidget**>(&ui.lineEdit_keyword) };
