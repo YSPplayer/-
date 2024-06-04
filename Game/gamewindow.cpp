@@ -20,9 +20,17 @@ namespace GameClient {
         font = LoadFont(lType,fType);
         SetWidgetMap();
         SetDeckWinodw();
-        deckEditContainer = DeckEditContainer(ui.widget_main_deck);
+        mainDeckEditContainer = DeckEditContainer(ui.widget_main_deck,4);
         for(qint32 i = 0 ; i < 90; ++i) {
-            deckEditContainer.AddImageCard(new ImageCard(QPixmap(rootPath + "/Resources/Pics/2511.jpg"),deckEditContainer.GetImageWidth(),deckEditContainer.GetImageHeight(),ui.widget_main_deck));
+            mainDeckEditContainer.AddImageCard(new ImageCard(QPixmap(rootPath + "/Resources/Pics/2511.jpg"),mainDeckEditContainer.GetImageWidth(),mainDeckEditContainer.GetImageHeight(),ui.widget_main_deck));
+        }
+        extraDeckEditContainer = DeckEditContainer(ui.widget_extra_deck);
+        for(qint32 i = 0 ; i < 10; ++i) {
+            extraDeckEditContainer.AddImageCard(new ImageCard(QPixmap(rootPath + "/Resources/Pics/2511.jpg"),extraDeckEditContainer.GetImageWidth(),extraDeckEditContainer.GetImageHeight(),ui.widget_extra_deck));
+        }
+        secondDeckEditContainer = DeckEditContainer(ui.widget_second_deck);
+        for(qint32 i = 0 ; i < 50; ++i) {
+            secondDeckEditContainer.AddImageCard(new ImageCard(QPixmap(rootPath + "/Resources/Pics/2511.jpg"),secondDeckEditContainer.GetImageWidth(),secondDeckEditContainer.GetImageHeight(),ui.widget_second_deck));
         }
 
     }

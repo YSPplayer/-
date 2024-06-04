@@ -6,27 +6,20 @@
 #include "deckeditcontainer.h"
 namespace GameClient::Component {
 
-	DeckEditContainer::DeckEditContainer(QWidget* parent) {
+	DeckEditContainer::DeckEditContainer(QWidget* parent,qint32 yCardNumber) {
 		this->parent = parent;
 		width = this->parent->width();
 		height = this->parent->height();
 		xSpacing = DEFAULT_DECKEDITCONTAINER_X_SPACING;
 		ySpacing = DEFAULT_DECKEDITCONTAINER_Y_SPACING;
 		xCardNumber = DEFAULT_DECKEDITCONTAINER_X_CARD_NUMBER;
-		yCardNumber = DEFAULT_DECKEDITCONTAINER_Y_CARD_NUMBER;
+		this->yCardNumber = yCardNumber;//每列最多的卡片存储量
 		maxNumber = xCardNumber * yCardNumber;
 		lineLength = width - 2;//默认最小1个间距
 		imageWidth = static_cast<qint32>((width - (xCardNumber + 1) * xSpacing) / xCardNumber);
 		imageHeight = static_cast<qint32>((height - (yCardNumber + 1) * ySpacing) / yCardNumber);
 		xOffset = 0;
 		imageCards.resize(0);
-	/*	for(qint32 i = 0;i < yCardNumber; ++i) {
-			QList<ImageCard*> lineImageCards;
-			for(qint32 j = 0; j < xCardNumber; ++j) {
-				lineImageCards.append(nullptr);
-			}
-			imageCards.append(lineImageCards);
-		}*/
 	}
 
 	/// <summary>
@@ -52,8 +45,8 @@ namespace GameClient::Component {
 		if(imageCard) {
 			const QRect& rect = imageCard->geometry();
 			qint32 size = imageCards.size();
-			if(size < 40) {
-				if(size % xCardNumber == 0) {//说明当前的卡片位于最右侧，我们需要换行显示图片
+			if(size < yCardNumber * DEFAULT_DECKEDITCONTAINER_X_CARD_NUMBER) {
+				if(yCardNumber > 1 && size % xCardNumber == 0) {//说明当前的卡片位于最右侧，我们需要换行显示图片
 					return QRect(DEFAULT_DECKEDITCONTAINER_X_SPACING,rect.y() + rect.height() + ySpacing, rect.width(), rect.height());
 				} else {//在该卡片的后面位置来显示我们的图片
 					return QRect(rect.x() + rect.width() + xSpacing,rect.y(), rect.width(), rect.height());
@@ -76,7 +69,7 @@ namespace GameClient::Component {
 					if(i > 0) {
 						ImageCard* lastImageCard = imageCards[i - 1];
 						const QRect& rect = lastImageCard->geometry();
-						if(i % xCardNumber == 0) { //卡片位置在最右侧，需要换行显示
+						if(yCardNumber > 1 && i % xCardNumber == 0) { //卡片位置在最右侧，需要换行显示
 							cimageCard->move(cxSpacing,rect.y() + rect.height() + ySpacing);
 						} else {
 							cimageCard->move(rect.x() + rect.width() - xOffset,rect.y());

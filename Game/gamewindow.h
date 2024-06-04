@@ -40,6 +40,8 @@ namespace GameClient {
         FontType fType;//字体种类
         LanguageType lType;//语言种类
         QFont font;//当前程序使用的字体
-        DeckEditContainer deckEditContainer;
+        DeckEditContainer mainDeckEditContainer;
+        DeckEditContainer extraDeckEditContainer;
+        DeckEditContainer secondDeckEditContainer;
     };
 }

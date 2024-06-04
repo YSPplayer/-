@@ -11,7 +11,7 @@ namespace GameClient::Component {
 	class DeckEditContainer {
 	public:
 		DeckEditContainer(){};
-		DeckEditContainer(QWidget* parent);
+		DeckEditContainer(QWidget* parent,qint32 yCardNumber = 1);
 		void AddImageCard(ImageCard* imageCard);
 		inline qint32 GetImageWidth() {
 			return imageWidth;
