@@ -10,22 +10,30 @@
 namespace GameClient::Component { 
 	class DeckEditContainer {
 	public:
+		DeckEditContainer(){};
 		DeckEditContainer(QWidget* parent);
 		void AddImageCard(ImageCard* imageCard);
+		inline qint32 GetImageWidth() {
+			return imageWidth;
+		};
+		inline qint32 GetImageHeight() {
+			return imageHeight;  
+		};
 	private:
 		QWidget* parent;
-		QList<QList<ImageCard*>> imageCards;
+		QList<ImageCard*> imageCards;
+		qint32 lineLength;//标准容纳卡片所需要的总长度
+		qint32 maxNumber;//当前容器状态位置下的卡片最大值
 		qint32 width;
 		qint32 height;
 		qint32 imageWidth;
 		qint32 imageHeight;
 		qint32 xSpacing;
 		qint32 ySpacing;
-		qint32 lineCardNumber;//每行最多的卡片存储量
-		qint32 currentX;//当前的容器最后一个卡片定位的索引位置
-		qint32 currentY;//当前的容器最后一个卡片定位的索引位置
-		QRect GetImageCardGeometry(qint32 currentX,qint32 currentY);
-		bool GetImageCardsLastIndex(qint32 currentX,qint32 currentY,qint32& x, qint32& y);
-		bool GetImageCardsNextIndex(qint32 currentX,qint32 currentY,qint32& x, qint32& y);
+		qint32 xCardNumber;//每行最多的卡片存储量
+		qint32 yCardNumber;//每列最多的卡片存储量
+		qint32 xOffset;//卡片之间需要叠放的距离
+		QRect GetImageCardGeometry(ImageCard* imageCard);
+		void SetLineNumber(qint32 size);
 	};
 }

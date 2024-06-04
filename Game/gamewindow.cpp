@@ -11,7 +11,6 @@
 #include "Component/cdelegate.h"
 namespace GameClient { 
     using namespace GameClient::Tag;
-    using namespace GameClient::Component;
     GameWindow::GameWindow(QWidget *parent)
         : QWidget(parent) {
         rootPath = QCoreApplication::applicationDirPath();
@@ -21,6 +20,11 @@ namespace GameClient {
         font = LoadFont(lType,fType);
         SetWidgetMap();
         SetDeckWinodw();
+        deckEditContainer = DeckEditContainer(ui.widget_main_deck);
+        for(qint32 i = 0 ; i < 90; ++i) {
+            deckEditContainer.AddImageCard(new ImageCard(QPixmap(rootPath + "/Resources/Pics/2511.jpg"),deckEditContainer.GetImageWidth(),deckEditContainer.GetImageHeight(),ui.widget_main_deck));
+        }
+
     }
 
     GameWindow::~GameWindow() {

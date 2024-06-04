@@ -9,9 +9,11 @@
 #include <QMap>
 #include "ui_game.h"
 #include "Enum/enumtype.h"
+#include "Component/deckeditcontainer.h"
 
 namespace GameClient { 
     using namespace GameClient::GameEnum;
+    using namespace GameClient::Component;
     struct WidgetInfo {
         quint32 type;
         QWidget** pwidgetPtr;
@@ -38,5 +40,6 @@ namespace GameClient {
         FontType fType;//字体种类
         LanguageType lType;//语言种类
         QFont font;//当前程序使用的字体
+        DeckEditContainer deckEditContainer;
     };
 }

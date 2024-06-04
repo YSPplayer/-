@@ -5,11 +5,10 @@
 */
 #include "imagecard.h"
 namespace GameClient::Component {
-	ImageCard::ImageCard(const QPixmap& image,qint32 x,qint32 y,qint32 width,qint32 heigth,QWidget* parent):QLabel(parent) {
-		setGeometry(x,y,width,heigth);
-		setPixmap(image.scaled(size(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	ImageCard::ImageCard(const QPixmap& image,qint32 width,qint32 height,QWidget* parent):QLabel(parent) {
+		resize(width,height);
+		setPixmap(image.scaled(size(),Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
 	}
-	 
 
 	ImageCard::~ImageCard(){}
 
