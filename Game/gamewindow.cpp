@@ -9,11 +9,13 @@
 #include <QBuffer>
 #include "Tag/dfwindow.h"
 #include "Component/cdelegate.h"
+#include "Util/qutil.h"
 namespace GameClient { 
     using namespace GameClient::Tag;
+    using namespace GameClient::Tool;
     GameWindow::GameWindow(QWidget *parent)
         : QWidget(parent) {
-        rootPath = QCoreApplication::applicationDirPath();
+        rootPath = QUtilGetRootPath();
         ui.setupUi(this);
         fType = FontType::YoungRound_CN;
         lType = LanguageType::zh_CN;
@@ -21,18 +23,7 @@ namespace GameClient {
         SetWidgetMap();
         SetDeckWinodw();
         mainDeckEditContainer = DeckEditContainer(ui.widget_main_deck,4);
-        for(qint32 i = 0 ; i < 90; ++i) {
-            mainDeckEditContainer.AddImageCard(new ImageCard(QPixmap(rootPath + "/Resources/Pics/2511.jpg"),mainDeckEditContainer.GetImageWidth(),mainDeckEditContainer.GetImageHeight(),ui.widget_main_deck));
-        }
-        extraDeckEditContainer = DeckEditContainer(ui.widget_extra_deck);
-        for(qint32 i = 0 ; i < 10; ++i) {
-            extraDeckEditContainer.AddImageCard(new ImageCard(QPixmap(rootPath + "/Resources/Pics/2511.jpg"),extraDeckEditContainer.GetImageWidth(),extraDeckEditContainer.GetImageHeight(),ui.widget_extra_deck));
-        }
-        secondDeckEditContainer = DeckEditContainer(ui.widget_second_deck);
-        for(qint32 i = 0 ; i < 50; ++i) {
-            secondDeckEditContainer.AddImageCard(new ImageCard(QPixmap(rootPath + "/Resources/Pics/2511.jpg"),secondDeckEditContainer.GetImageWidth(),secondDeckEditContainer.GetImageHeight(),ui.widget_second_deck));
-        }
-
+        cardSearchScrollArea = CardSearchScrollArea(&font,ui.widget_card_search);
     }
 
     GameWindow::~GameWindow() {
@@ -50,7 +41,7 @@ namespace GameClient {
             quint8 itype = info.type;
             qint32 fsize = 10;
             if(fType == FontType::YoungRound_CN) fsize = 14;
-            if(itype != GAME_COMPONENT_WIDGET) SetWidgetFont(widget,fsize);
+            if(itype != GAME_COMPONENT_WIDGET) QUtil::SetWidgetFont(&font,widget,fsize);
             if(itype == GAME_COMPONENT_WIDGET) {
                 SetWidgetShadow(widget,QColor(62, 62, 62));
             } else if(itype == GAME_COMPONENT_BUTTON) {
@@ -178,17 +169,6 @@ namespace GameClient {
         effect->setBlurRadius(size);
         effect->setColor(color);
         widget->setGraphicsEffect(effect);
-    }
-
-    /// <summary>
-    /// 设置当前窗口的字体
-    /// </summary>
-    /// <param name="widget"></param>
-    /// <param name="size"></param>
-    void GameWindow::SetWidgetFont(QWidget* widget, qint32 size) {
-        font.setPointSize(size);
-        font.setBold(false);
-        widget->setFont(font);
     }
 
     /// <summary>

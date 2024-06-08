@@ -28,5 +28,6 @@ int main(int argc, char *argv[]) {
     GameWindow* w = new GameWindow;
     SetWindowCenTer(w);
     w->showMaximized();
+
     return a.exec();
 }

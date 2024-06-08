@@ -10,6 +10,7 @@
 #include "ui_game.h"
 #include "Enum/enumtype.h"
 #include "Component/deckeditcontainer.h"
+#include "Component/cardsearchscrollarea.h"
 
 namespace GameClient { 
     using namespace GameClient::GameEnum;
@@ -32,7 +33,6 @@ namespace GameClient {
         void SetWidgetState(quint8 wtype,quint8 stype,QWidget* widget, qint32 size = 2);
         void SetWidgetMap();
         void SetWidgetShadow(QWidget* widget, const QColor& color, bool inverted = false, qint32 size = 2);
-        void SetWidgetFont(QWidget* widget,qint32 size);
         qint32 GetComboBoxTextCenterValue(QComboBox* comboBox);
         WidgetInfo GetWidgetInfo(QObject* widget);
         QFont LoadFont(LanguageType ltype,FontType fType);
@@ -43,5 +43,6 @@ namespace GameClient {
         DeckEditContainer mainDeckEditContainer;
         DeckEditContainer extraDeckEditContainer;
         DeckEditContainer secondDeckEditContainer;
+        CardSearchScrollArea cardSearchScrollArea;
     };
 }

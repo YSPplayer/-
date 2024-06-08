@@ -807,7 +807,7 @@ background-color: transparent;</string>
    <widget class="QWidget" name="widget_search_text" native="true">
     <property name="geometry">
      <rect>
-      <x>1567</x>
+      <x>1508</x>
       <y>222</y>
       <width>190</width>
       <height>30</height>
@@ -840,9 +840,9 @@ background-color: transparent;</string>
    <widget class="QComboBox" name="comboBox_deck_search_sort">
     <property name="geometry">
      <rect>
-      <x>1772</x>
+      <x>1713</x>
       <y>223</y>
-      <width>140</width>
+      <width>199</width>
       <height>30</height>
      </rect>
     </property>
@@ -860,6 +860,20 @@ border-radius: 5px;</string>
       <string>人机</string>
      </property>
     </item>
+   </widget>
+   <widget class="QWidget" name="widget_card_search" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1508</x>
+      <y>260</y>
+      <width>404</width>
+      <height>746</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> border: 1px solid #3E3E3E;
+background-color: transparent;</string>
+    </property>
    </widget>
   </widget>
  </widget>
