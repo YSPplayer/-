@@ -52,6 +52,9 @@
     <ClCompile Include="Component\cardsearchscrollarea.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\clientcard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum\enumtype.h">
@@ -72,12 +75,18 @@
     <ClInclude Include="Component\cardsearchscrollarea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Tag\dfcard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Component\imagecard.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Component\cardsearchcontainer.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Client\clientcard.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

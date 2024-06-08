@@ -12,4 +12,10 @@ namespace GameClient::GameEnum {
 		zh_CN,
 		en_US
 	};
+
+	enum class ValueType:quint8 {
+		Common,
+		Undefined,
+		Infinity,
+	};
 }

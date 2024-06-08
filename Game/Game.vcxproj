@@ -92,6 +92,7 @@
     <QtRcc Include="game.qrc" />
     <QtUic Include="game.ui" />
     <QtMoc Include="gamewindow.h" />
+    <ClCompile Include="Client\clientcard.cpp" />
     <ClCompile Include="Component\cardsearchcontainer.cpp" />
     <ClCompile Include="Component\cardsearchscrollarea.cpp" />
     <ClCompile Include="Component\deckeditcontainer.cpp" />
@@ -101,8 +102,10 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Component\cardsearchcontainer.h" />
+    <QtMoc Include="Client\clientcard.h" />
     <ClInclude Include="Component\cardsearchscrollarea.h" />
     <ClInclude Include="Component\cdelegate.h" />
+    <ClInclude Include="Tag\dfcard.h" />
     <ClInclude Include="Util\qutil.h" />
     <QtMoc Include="Component\imagecard.h" />
     <ClInclude Include="Component\deckeditcontainer.h" />
