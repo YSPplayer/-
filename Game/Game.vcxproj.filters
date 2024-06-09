@@ -55,6 +55,12 @@
     <ClCompile Include="Client\clientcard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\deckmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\qutil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum\enumtype.h">
@@ -78,15 +84,21 @@
     <ClInclude Include="Tag\dfcard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Client\deckmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\clientcard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tag\dftext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Component\imagecard.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Component\cardsearchcontainer.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Client\clientcard.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

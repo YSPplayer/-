@@ -5,10 +5,10 @@
 */
 #pragma once
 namespace GameClient::GameEnum {
-	enum class FontType {
+	enum class FontType:quint8  {
 		YoungRound_CN,//ÖĞÎÄÓ×Ô²×ÖÌå
 	};
-	enum class LanguageType {
+	enum class LanguageType:quint8  {
 		zh_CN,
 		en_US
 	};

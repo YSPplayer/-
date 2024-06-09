@@ -7,11 +7,15 @@
 #include <QWidget>
 #include <QScrollArea>
 #include <QVBoxLayout>
-namespace GameClient::Component {  
+#include <QList>
+#include "../Client/clientcard.h"
+namespace GameClient::Component {
+	using namespace GameClient::Client;
 	class CardSearchScrollArea {
 		public:
 			CardSearchScrollArea() {};
 			CardSearchScrollArea(QFont* pfont,QWidget* parent);
+			void LoadCards(QList<ClientCard*> cards);
 		private:
 			QScrollArea *scrollArea;//索引栏滚动区域
 			QWidget *container;//垂直管理器容器

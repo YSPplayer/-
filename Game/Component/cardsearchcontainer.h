@@ -7,17 +7,20 @@
 #include <Qwidget>
 #include <QLabel>
 #include "imagecard.h"
+#include "cardsearchscrollarea.h"
 namespace GameClient::Component {
+	using namespace GameClient::Client;
 	class CardSearchContainer : public QWidget {
 			Q_OBJECT
 		public:
-			CardSearchContainer(QFont* pfont,QWidget* parent = nullptr);
+			friend CardSearchScrollArea;
+			CardSearchContainer(const QPixmap& image,QFont* pfont,QWidget* parent = nullptr);
 		private:
-			ImageCard* card;
+			bool hovered;
+			ImageCard* imageCard;
 			QLabel* textName;
 			QLabel* textAttribute;
 			QLabel* textAd;
-			bool hovered;
 		protected:
 			void enterEvent(QEnterEvent *event) override;
 			void leaveEvent(QEvent *event) override;

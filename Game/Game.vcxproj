@@ -38,12 +38,12 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;sql</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;sql</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -89,10 +89,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Util\qutil.cpp" />
     <QtRcc Include="game.qrc" />
     <QtUic Include="game.ui" />
     <QtMoc Include="gamewindow.h" />
     <ClCompile Include="Client\clientcard.cpp" />
+    <ClCompile Include="Client\deckmanager.cpp" />
     <ClCompile Include="Component\cardsearchcontainer.cpp" />
     <ClCompile Include="Component\cardsearchscrollarea.cpp" />
     <ClCompile Include="Component\deckeditcontainer.cpp" />
@@ -102,10 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Component\cardsearchcontainer.h" />
-    <QtMoc Include="Client\clientcard.h" />
+    <ClInclude Include="Client\clientcard.h" />
+    <ClInclude Include="Client\deckmanager.h" />
     <ClInclude Include="Component\cardsearchscrollarea.h" />
     <ClInclude Include="Component\cdelegate.h" />
     <ClInclude Include="Tag\dfcard.h" />
+    <ClInclude Include="Tag\dftext.h" />
     <ClInclude Include="Util\qutil.h" />
     <QtMoc Include="Component\imagecard.h" />
     <ClInclude Include="Component\deckeditcontainer.h" />

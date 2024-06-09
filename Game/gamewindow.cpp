@@ -10,9 +10,11 @@
 #include "Tag/dfwindow.h"
 #include "Component/cdelegate.h"
 #include "Util/qutil.h"
+#include "Client/clientcard.h"
 namespace GameClient { 
     using namespace GameClient::Tag;
     using namespace GameClient::Tool;
+    using namespace GameClient::Client;
     GameWindow::GameWindow(QWidget *parent)
         : QWidget(parent) {
         rootPath = QUtilGetRootPath();
@@ -24,6 +26,9 @@ namespace GameClient {
         SetDeckWinodw();
         mainDeckEditContainer = DeckEditContainer(ui.widget_main_deck,4);
         cardSearchScrollArea = CardSearchScrollArea(&font,ui.widget_card_search);
+        QList<ClientCard*> cards;
+        QUtil::LoadDb(QUtilGetRootPath()+ "/Data/cards.cdb",cards);
+        cardSearchScrollArea.LoadCards(cards);
     }
 
     GameWindow::~GameWindow() {
