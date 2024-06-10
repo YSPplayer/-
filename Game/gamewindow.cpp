@@ -24,11 +24,6 @@ namespace GameClient {
         font = LoadFont(lType,fType);
         SetWidgetMap();
         SetDeckWinodw();
-        mainDeckEditContainer = DeckEditContainer(ui.widget_main_deck,4);
-        cardSearchScrollArea = CardSearchScrollArea(&font,ui.widget_card_search);
-        QList<ClientCard*> cards;
-        QUtil::LoadDb(QUtilGetRootPath()+ "/Data/cards.cdb",cards);
-        cardSearchScrollArea.LoadCards(cards);
     }
 
     GameWindow::~GameWindow() {
@@ -63,11 +58,41 @@ namespace GameClient {
                 QComboBox* comboBox = qobject_cast<QComboBox*>(widget);
                 if (!comboBox) continue;
                 SetWidgetShadow(comboBox,QColor(115, 115, 122),false,1);
+                //Ìí¼ÓÔªËØ
+                QList<QString> texts;
+                if(comboBox == ui.comboBox_deck_type_all) {
+                    comboBox->addItem(TEXT_NONE);
+                    texts = QUtil::GetTypeTextList(Util::Or(TYPE_MONSTER,TYPE_SPELL,TYPE_TRAP));
+                } else if(comboBox == ui.comboBox_deck_type_detail) {
+                    comboBox->addItem(TEXT_NA);
+                    texts = QUtil::GetTypeTextList(Util::Or(TYPE_NORMAL,TYPE_EFFECT,TYPE_FUSION));
+                } else if(comboBox == ui.comboBox_deck_attribute) {
+                    comboBox->addItem(TEXT_NONE);
+                    texts = QUtil::GetAttributeTextList(ATTRIBUTE_ALL);
+                } else if(comboBox == ui.comboBox_deck_race) {
+                    comboBox->addItem(TEXT_NONE);
+                    texts = QUtil::GetRaceTextList(RACE_ALL);
+                } else if(comboBox == ui.comboBox_deck_forbid) {
+                    comboBox->addItem(TEXT_NONE);
+                } else if(comboBox == ui.comboBox_deck_star) {
+                    for(qint32 i = 1; i <= 12; ++i) {
+                        //"\342\230\205" + 
+                        comboBox->addItem(QString::number(i));
+                    }
+                }
+                for(auto& text : texts)
+                    comboBox->addItem(text); 
                 comboBox->setStyleSheet(QString(R"(QComboBox { border-radius: 5px;background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727); padding-left:%1px; color:rgb(199, 195, 195);}
                 QComboBox::drop-down {width: 40px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;}
                 QComboBox::down-arrow { image: url(%2); background-position: center;background-repeat: no-repeat;}
                 QComboBox QAbstractItemView { border:none; color:rgb(199, 195, 195); background-color: #4B4B54;}
-                )").arg(QString::number(GetComboBoxTextCenterValue(comboBox))).arg(rootPath + "/Resources/UI/arrowDown.png"));
+                QScrollBar:vertical {border: none; border-style: solid; border-width: 0px 1px 0px 0px;background:#4B4B54;width: 15px;}
+				QScrollBar::handle:vertical {background: #74777B;min-height: 20px;border-radius: 5px;}
+				QScrollBar::add-line:vertical {background: none;}
+				QScrollBar::sub-line:vertical {	background: none;}
+				QScrollBar::sub-page:vertical {background: none;}
+				QScrollBar::add-page:vertical {background: none;} )"
+                ).arg(QString::number(GetComboBoxTextCenterValue(comboBox))).arg(rootPath + "/Resources/UI/arrowDown.png"));
                 auto delegate = new ComboBoxDelegate();
                 delegate->SetFont(&font, 13);
                 delegate->SetSelectColor(QColor(240, 126, 51));
@@ -80,6 +105,9 @@ namespace GameClient {
                                              border-radius:3px;})");
             }
         }
+        mainDeckEditContainer = DeckEditContainer(ui.widget_main_deck,4);
+        cardSearchScrollArea = CardSearchScrollArea(&font,ui.widget_card_search);
+        //cardSearchScrollArea.LoadCards(cards);
     }
 
     /// <summary>

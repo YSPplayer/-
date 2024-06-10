@@ -372,16 +372,6 @@ border-radius: 5px;</string>
       <string notr="true">background-color: #4B4B54;
 border-radius: 5px;</string>
      </property>
-     <item>
-      <property name="text">
-       <string>默认</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>人机</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLabel" name="label_deck_forbid">
      <property name="geometry">
@@ -409,16 +399,6 @@ border-radius: 5px;</string>
       <string notr="true">background-color: #4B4B54;
 border-radius: 5px;</string>
      </property>
-     <item>
-      <property name="text">
-       <string>默认</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>人机</string>
-      </property>
-     </item>
     </widget>
     <widget class="QComboBox" name="comboBox_deck_type_all">
      <property name="geometry">
@@ -433,16 +413,6 @@ border-radius: 5px;</string>
       <string notr="true">background-color: #4B4B54;
 border-radius: 5px;</string>
      </property>
-     <item>
-      <property name="text">
-       <string>默认</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>人机</string>
-      </property>
-     </item>
     </widget>
     <widget class="QComboBox" name="comboBox_deck_type_detail">
      <property name="geometry">
@@ -457,16 +427,6 @@ border-radius: 5px;</string>
       <string notr="true">background-color: #4B4B54;
 border-radius: 5px;</string>
      </property>
-     <item>
-      <property name="text">
-       <string>默认</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>人机</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLabel" name="label_deck_race">
      <property name="geometry">
@@ -494,16 +454,6 @@ border-radius: 5px;</string>
       <string notr="true">background-color: #4B4B54;
 border-radius: 5px;</string>
      </property>
-     <item>
-      <property name="text">
-       <string>默认</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>人机</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLabel" name="label_deck_star">
      <property name="geometry">
@@ -531,16 +481,6 @@ border-radius: 5px;</string>
       <string notr="true">background-color: #4B4B54;
 border-radius: 5px;</string>
      </property>
-     <item>
-      <property name="text">
-       <string>默认</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>人机</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLabel" name="label_deck_ad">
      <property name="geometry">
@@ -850,16 +790,6 @@ background-color: transparent;</string>
      <string notr="true">background-color: #4B4B54;
 border-radius: 5px;</string>
     </property>
-    <item>
-     <property name="text">
-      <string>默认</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>人机</string>
-     </property>
-    </item>
    </widget>
    <widget class="QWidget" name="widget_card_search" native="true">
     <property name="geometry">

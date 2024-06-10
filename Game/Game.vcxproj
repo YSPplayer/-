@@ -89,12 +89,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component\cscrollarea .cpp" />
+    <ClCompile Include="Component\cscrollarea.cpp" />
+    <ClCompile Include="Core\core.cpp" />
+    <ClCompile Include="gameclientwindow.cpp" />
     <ClCompile Include="Util\qutil.cpp" />
     <QtRcc Include="game.qrc" />
     <QtUic Include="game.ui" />
     <QtMoc Include="gamewindow.h" />
     <ClCompile Include="Client\clientcard.cpp" />
-    <ClCompile Include="Client\deckmanager.cpp" />
     <ClCompile Include="Component\cardsearchcontainer.cpp" />
     <ClCompile Include="Component\cardsearchscrollarea.cpp" />
     <ClCompile Include="Component\deckeditcontainer.cpp" />
@@ -103,11 +106,15 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\core.h" />
+    <ClInclude Include="Core\coredata.h" />
+    <ClInclude Include="Util\util.h" />
     <QtMoc Include="Component\cardsearchcontainer.h" />
     <ClInclude Include="Client\clientcard.h" />
-    <ClInclude Include="Client\deckmanager.h" />
     <ClInclude Include="Component\cardsearchscrollarea.h" />
     <ClInclude Include="Component\cdelegate.h" />
+    <QtMoc Include="Component\cscrollarea .h" />
+    <QtMoc Include="gameclientwindow.h" />
     <ClInclude Include="Tag\dfcard.h" />
     <ClInclude Include="Tag\dftext.h" />
     <ClInclude Include="Util\qutil.h" />

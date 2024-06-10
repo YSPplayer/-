@@ -9,6 +9,7 @@
 #include <QVBoxLayout>
 #include <QList>
 #include "../Client/clientcard.h"
+#include "cscrollarea .h"
 namespace GameClient::Component {
 	using namespace GameClient::Client;
 	class CardSearchScrollArea {
@@ -16,13 +17,14 @@ namespace GameClient::Component {
 			CardSearchScrollArea() {};
 			CardSearchScrollArea(QFont* pfont,QWidget* parent);
 			void LoadCards(QList<ClientCard*> cards);
+			CScrollArea *scrollArea;//索引栏滚动区域
 		private:
-			QScrollArea *scrollArea;//索引栏滚动区域
 			QWidget *container;//垂直管理器容器
 			QVBoxLayout *layout;//垂直管理器
 			QFont* pfont;
 			QWidget* parent;
 	};
+
 #define SCROLLAREA_STYLE  R"(
 				QScrollBar:vertical {
 					border: none;

@@ -3,7 +3,7 @@
 创建日期：2024-5-24
 无修正
 */
-#include "gamewindow.h"
+#include "gameclientwindow.h"
 #include <QScreen>
 #include <QtWidgets/QApplication>
 #include <QApplication>
@@ -25,7 +25,7 @@ void SetWindowCenTer(QWidget* window) {
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    GameWindow* w = new GameWindow;
+    GameClientWindow* w = new GameClientWindow;
     SetWindowCenTer(w);
     w->showMaximized();
 

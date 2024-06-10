@@ -6,6 +6,9 @@
 #pragma once
 #include <QCoreApplication>
 namespace GameClient::Tag {
+#define TEXT_NONE  QCoreApplication::translate("GameClass","\50\346\227\240\51",nullptr)//（无）
+#define TEXT_NA  QCoreApplication::translate("GameClass","\50\116\57\101\51",nullptr)//（N/A）
+
 #define TEXT_ATTRIBUTE_EARTH QCoreApplication::translate("GameClass","\345\234\260",nullptr)//地
 #define TEXT_ATTRIBUTE_WATER QCoreApplication::translate("GameClass","\346\260\264",nullptr)//水
 #define TEXT_ATTRIBUTE_FIRE QCoreApplication::translate("GameClass","\347\201\253",nullptr)//火
@@ -40,11 +43,33 @@ namespace GameClient::Tag {
 #define TEXT_RACE_WYRM QCoreApplication::translate("GameClass","\345\271\273\351\276\231",nullptr) // 幻龙
 #define TEXT_RACE_CYBERSE QCoreApplication::translate("GameClass","\347\224\265\345\255\220\347\225\214",nullptr) // 电子界
 
-#define TEXT_SPELL QCoreApplication::translate("GameClass","\351\255\224\346\263\225",nullptr)//魔法
-#define TEXT_TRAP QCoreApplication::translate("GameClass","\351\231\267\351\230\261",nullptr)//陷阱
-#define TEXT_QUICKPLAY QCoreApplication::translate("GameClass","\351\200\237\346\224\273",nullptr)//速攻
-#define TEXT_CONTINUOUS QCoreApplication::translate("GameClass","\346\260\270\347\273\255",nullptr)//永续
-#define TEXT_EQUIP QCoreApplication::translate("GameClass","\350\243\205\345\244\207",nullptr)//装备
-#define TEXT_FIELD QCoreApplication::translate("GameClass","\345\234\272\345\234\260",nullptr)//场地
-#define TEXT_COUNTER QCoreApplication::translate("GameClass","\345\217\215\345\207\273",nullptr)//反击
+
+#define TEXT_TYPE_MONSTER QCoreApplication::translate("GameClass","\346\200\252\345\205\275",nullptr)//怪兽
+#define TEXT_TYPE_SPELL QCoreApplication::translate("GameClass","\351\255\224\346\263\225",nullptr)//魔法
+#define TEXT_TYPE_TRAP QCoreApplication::translate("GameClass","\351\231\267\351\230\261",nullptr)//陷阱
+#define TEXT_TYPE_NORMAL QCoreApplication::translate("GameClass", "\351\200\232\345\270\270", nullptr)  // 通常
+#define TEXT_TYPE_EFFECT QCoreApplication::translate("GameClass", "\346\225\210\346\236\234", nullptr)  // 效果
+#define TEXT_TYPE_FUSION QCoreApplication::translate("GameClass", "\350\236\215\345\220\210", nullptr)  // 融合
+#define TEXT_TYPE_RITUAL QCoreApplication::translate("GameClass", "\344\273\252\345\274\217", nullptr)  // 仪式
+#define TEXT_TYPE_TRAPMONSTER QCoreApplication::translate("GameClass", "\351\231\267\351\230\261\346\200\252\345\205\275", nullptr)  // 陷阱怪兽
+#define TEXT_TYPE_SPIRIT QCoreApplication::translate("GameClass", "\347\201\265\351\255\202", nullptr)  // 灵魂
+#define TEXT_TYPE_UNION QCoreApplication::translate("GameClass", "\345\220\214\347\233\237", nullptr)  // 同盟
+#define TEXT_TYPE_DUAL QCoreApplication::translate("GameClass", "\344\272\214\351\207\215", nullptr)  // 二重
+#define TEXT_TYPE_TUNER QCoreApplication::translate("GameClass", "\350\260\203\346\225\264", nullptr)  // 调整
+#define TEXT_TYPE_SYNCHRO QCoreApplication::translate("GameClass", "\345\220\214\350\260\203", nullptr)  // 同调
+#define TEXT_TYPE_TOKEN QCoreApplication::translate("GameClass", "\350\241\215\347\224\237\347\211\251", nullptr)  // 衍生物
+#define TEXT_TYPE_QUICKPLAY QCoreApplication::translate("GameClass", "\351\200\237\346\224\273", nullptr)  // 速攻
+#define TEXT_TYPE_CONTINUOUS QCoreApplication::translate("GameClass", "\\346\260\270\347\273\255", nullptr)  // 永续
+#define TEXT_TYPE_EQUIP QCoreApplication::translate("GameClass", "\350\243\205\345\244\207", nullptr)  // 装备
+#define TEXT_TYPE_FIELD QCoreApplication::translate("GameClass", "\345\234\272\345\234\260", nullptr)  // 场地
+#define TEXT_TYPE_COUNTER QCoreApplication::translate("GameClass", "\345\217\215\345\207\273", nullptr)  // 反击
+#define TEXT_TYPE_FLIP QCoreApplication::translate("GameClass", "\345\217\215\350\275\254", nullptr)  // 反转
+#define TEXT_TYPE_TOON QCoreApplication::translate("GameClass", "\345\215\241\351\200\232", nullptr)  // 卡通
+#define TEXT_TYPE_XYZ QCoreApplication::translate("GameClass", "\350\266\205\351\207\217", nullptr)  // 超量
+#define TEXT_TYPE_PENDULUM QCoreApplication::translate("GameClass", "\347\201\265\346\221\206", nullptr)  // 灵摆
+#define TEXT_TYPE_SPSUMMON QCoreApplication::translate("GameClass", "\347\211\271\346\256\212\345\217\254\345\224\244", nullptr)  // 特殊召唤
+#define TEXT_TYPE_LINK QCoreApplication::translate("GameClass", "\351\223\276\346\216\245", nullptr)  // 链接
+
+
+
 }

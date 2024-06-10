@@ -11,6 +11,7 @@ namespace GameClient::Component {
 		public:
 			ImageCard(const QPixmap& image,QWidget* parent = nullptr);
 			ImageCard(const QPixmap& image,qint32 width,qint32 height,QWidget* parent = nullptr);
+			void SetImage(const QPixmap& image);
 			~ImageCard();
 		protected:
 			void mousePressEvent(QMouseEvent* event) override;

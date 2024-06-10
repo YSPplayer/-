@@ -14,9 +14,11 @@
 #include "../Client/clientcard.h"
 #include "../Tag/dfcard.h"
 #include "../Tag/dftext.h"
+#include "util.h"
 namespace GameClient::Tool {
 	using namespace GameClient::Client;
 	using namespace GameClient::Tag;
+	using namespace GameUtil;
 	class QUtil {
 /// <summary>
 /// 获得当前程序运行的根目录
@@ -26,6 +28,28 @@ namespace GameClient::Tool {
 	    private:
 			static QMap<quint64,QString> attributeMap;
 			static QMap<quint64,QString> raceMap;
+			static QMap<quint64,QString> typeMap;
+			static QString GetMapText(const QMap<quint64,QString>& map,quint64 ckey) {
+				QString text = "";
+				bool first = true;
+				bool result = false;
+				for (auto key : map.keys()) {
+					if(ContainAny(ckey,key)) {
+						text += first ? map[key] : ("|" +  map[key]);
+						result = true;
+					}
+				}
+				return result ? text : "???";
+			};
+			static QList<QString> GetMapTextList(const QMap<quint64,QString>& map,quint64 ckey) {
+				QList<QString> texts = {};
+				for (auto key : map.keys()) {
+					if(ContainAny(ckey,key)) {
+						texts.append(map[key]);
+					}
+				}
+				return texts;
+			};
 		public:
 		/// <summary>
 		/// 设置当前窗口的字体
@@ -52,8 +76,8 @@ namespace GameClient::Tool {
 		/// <param name="value"></param>
 		/// <returns></returns>
 		static Value Int32ToValue(qint32 value) {
-			if(value == -2) return {value,ValueType::Undefined};//?
-			if(value == -3) return {value,ValueType::Infinity};//∞
+			if(value == -2) return {0,ValueType::Undefined};//?
+			if(value == -3) return {0,ValueType::Infinity};//∞
 			return {value,ValueType::Common};
 		}
 
@@ -63,8 +87,26 @@ namespace GameClient::Tool {
 		/// <param name=""></param>
 		/// <returns></returns>
 		static QString GetAttributeText(quint64 attribute) {
-			if (attributeMap.contains(attribute)) return attributeMap[attribute];
-			return "???";
+			return GetMapText(attributeMap,attribute);
+		}
+
+
+		static QList<QString> GetAttributeTextList(quint64 attribute) {
+			return GetMapTextList(attributeMap,attribute);
+		}
+
+
+		/// <summary>
+		/// 获取种类文本
+		/// </summary>
+		/// <param name=""></param>
+		/// <returns></returns>
+		static QString GetTypeText(quint64 type) {
+			return GetMapText(typeMap,type);
+		}
+
+		static QList<QString> GetTypeTextList(quint64 type) {
+			return GetMapTextList(typeMap,type);
 		}
 
 		/// <summary>
@@ -74,8 +116,11 @@ namespace GameClient::Tool {
 		/// <param name="cards"></param>
 		/// <returns></returns>
 		static QString GetRaceText(quint64 race) {
-			if (raceMap.contains(race)) return raceMap[race];
-			return "???";
+			return GetMapText(raceMap,race);
+		}
+
+		static QList<QString> GetRaceTextList(quint64 race) {
+			return GetMapTextList(raceMap,race);
 		}
 
 		/// <summary>
@@ -118,7 +163,17 @@ namespace GameClient::Tool {
 				QString desc = query.value("desc").toString(); 
 				const Value& vatk = Int32ToValue(atk);
 				const Value& vdef = Int32ToValue(def);
-				cards.append(new ClientCard(id,ot,alias,type,setcode,level,attribute,race,vatk,vdef,name,desc));
+				qint64 linkMarker = 0;
+				qint64 lscale = 0;
+				qint64 rscale = 0;
+				if(type & TYPE_LINK) {
+					linkMarker = def;
+					def = 0;
+				}
+				lscale = (level >> 24) & 0xff;
+				rscale = (level >> 16) & 0xff;
+				level = level & 0xff;
+				cards.append(new ClientCard(id,ot,alias,type,setcode,level,lscale,rscale,linkMarker,attribute,race,vatk,vdef,name,desc));
 			}
 			db.close();
 			return true;

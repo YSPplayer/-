@@ -14,6 +14,8 @@ namespace GameClient::Client {
 	}
 
 	DeckManager* DeckManager::Init() {
-		return pdeckManager ? pdeckManager : new DeckManager();
+		if(pdeckManager) return  pdeckManager;
+		pdata
+		return new DeckManager();
 	}
 }

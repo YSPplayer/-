@@ -9,6 +9,11 @@ namespace GameClient::Component {
 		resize(width,height);
 	}
 
+	void ImageCard::SetImage(const QPixmap& image) {
+		this->image = image;
+		setPixmap(image.scaled(size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+	}
+
 	ImageCard::ImageCard(const QPixmap& image,QWidget* parent):QLabel(parent),image(image)  {}
 
 	ImageCard::~ImageCard(){}

@@ -43,6 +43,7 @@ namespace GameClient {
         DeckEditContainer mainDeckEditContainer;
         DeckEditContainer extraDeckEditContainer;
         DeckEditContainer secondDeckEditContainer;
+    protected:
         CardSearchScrollArea cardSearchScrollArea;
     };
 }

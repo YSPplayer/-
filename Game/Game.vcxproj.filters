@@ -55,10 +55,19 @@
     <ClCompile Include="Client\clientcard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Client\deckmanager.cpp">
+    <ClCompile Include="Util\qutil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Util\qutil.cpp">
+    <ClCompile Include="Component\cscrollarea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\cscrollarea .cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gameclientwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -84,13 +93,19 @@
     <ClInclude Include="Tag\dfcard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Client\deckmanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Client\clientcard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tag\dftext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\coredata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -99,6 +114,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Component\cardsearchcontainer.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Component\cscrollarea .h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="gameclientwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

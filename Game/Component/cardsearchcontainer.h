@@ -15,6 +15,8 @@ namespace GameClient::Component {
 		public:
 			friend CardSearchScrollArea;
 			CardSearchContainer(const QPixmap& image,QFont* pfont,QWidget* parent = nullptr);
+			void SetText(const QString& name,quint64 attribute,quint64 race,qint64 level,Value atk,Value def);
+			void SetImage(const QPixmap& image);
 		private:
 			bool hovered;
 			ImageCard* imageCard;
