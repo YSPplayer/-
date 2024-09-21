@@ -4,6 +4,8 @@
 无修正
 */
 #include "qutil.h"
+#include "../gamedeckwindow.h"
+#include "../gamemenuwindow.h"
 namespace GameClient::Tool { 
 	QMap<quint64,QString> QUtil::attributeMap = {
 		{ATTRIBUTE_EARTH, TEXT_ATTRIBUTE_EARTH},
@@ -68,4 +70,16 @@ namespace GameClient::Tool {
 		{TYPE_SPSUMMON, TEXT_TYPE_SPSUMMON},
 		{TYPE_LINK, TEXT_TYPE_LINK}
 	};
+	QList<QWidget*> QUtil::gameWindows;
+	/// <summary>
+	/// 初始化窗口管理集合 
+	/// </summary>
+	/// <returns></returns>
+	void QUtil::InitGameWindows() {
+		QWidget* widget = GetGameRootWidget();
+		gameWindows.resize(GAME_WINDOW_MAX);
+		gameWindows[GAME_WINDOW_MENU] = new GameMenuWindow(widget);
+		gameWindows[GAME_WINDOW_DECK] = new GameDeckWindow(widget);
+		return;
+	}
 }

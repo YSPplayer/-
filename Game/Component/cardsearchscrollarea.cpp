@@ -30,7 +30,7 @@ namespace GameClient::Component {
     /// 加载所有卡片到卡组容器中
     /// </summary>
     /// <param name="cards"></param>
-    void CardSearchScrollArea::LoadCards(QList<ClientCard*> cards) {
+    void CardSearchScrollArea::LoadCards(const QList<ClientCard*>& cards) {
         qint32 width = parent->width();
         qint32 height = static_cast<qint32>((parent->height() - 35) / 6);//需要除去7个间隔的高度
         //默认的间距
@@ -58,7 +58,7 @@ namespace GameClient::Component {
             layout->addWidget(cardContainer);
 
         }
-        cards.resize(12);
+     /*   cards.resize(12);*/
         //站位容器，以确保滚动条的长度
         QWidget* StationContainer = new QWidget(parent);
         qint32 containerHeight = height * (cards.size() - 6) + 5 * (cards.size() - 7);

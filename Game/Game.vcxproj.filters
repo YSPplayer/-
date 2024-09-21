@@ -29,10 +29,10 @@
     <QtUic Include="game.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="gamewindow.h">
+    <QtMoc Include="gamedeckwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClCompile Include="gamewindow.cpp">
+    <ClCompile Include="gamedeckwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -64,10 +64,13 @@
     <ClCompile Include="Component\cscrollarea .cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gameclientwindow.cpp">
+    <ClCompile Include="gameclientdeckwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Core\core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamemenuwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -119,8 +122,16 @@
     <QtMoc Include="Component\cscrollarea .h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="gameclientwindow.h">
+    <QtMoc Include="gameclientdeckwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="gamemenuwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="menu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

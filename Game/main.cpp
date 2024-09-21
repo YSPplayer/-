@@ -3,11 +3,13 @@
 创建日期：2024-5-24
 无修正
 */
-#include "gameclientwindow.h"
+#include "GameClientDeckWindow.h"
 #include <QScreen>
 #include <QtWidgets/QApplication>
 #include <QApplication>
+#include "Util/qutil.h"
 using namespace GameClient;
+using namespace GameClient::Tool;
 /// <summary>
 /// 设置当前窗体水平垂直居中
 /// </summary>
@@ -25,9 +27,10 @@ void SetWindowCenTer(QWidget* window) {
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    GameClientWindow* w = new GameClientWindow;
-    SetWindowCenTer(w);
-    w->showMaximized();
-
+    QUtil::InitGameWindows();
+    QWidget* parent = QUtil::GetGameRootWidget();
+    QUtil::ActivateChildWindow(parent, GAME_WINDOW_DECK);
+    SetWindowCenTer(parent);
+    parent->showMaximized();
     return a.exec();
 }

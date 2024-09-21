@@ -19,12 +19,12 @@ namespace GameClient {
         quint32 type;
         QWidget** pwidgetPtr;
     };
-    class GameWindow : public QWidget {
+    class GameDeckWindow : public QWidget {
         Q_OBJECT
 
     public:
-        GameWindow(QWidget *parent = nullptr);
-        ~GameWindow();
+        GameDeckWindow(QWidget *parent = nullptr);
+        ~GameDeckWindow();
 
     private:
         QMap<QObject*, WidgetInfo> widgetMap;

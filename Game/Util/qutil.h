@@ -29,6 +29,7 @@ namespace GameClient::Tool {
 			static QMap<quint64,QString> attributeMap;
 			static QMap<quint64,QString> raceMap;
 			static QMap<quint64,QString> typeMap;
+			static QList<QWidget*> gameWindows; //存放所有的UI子窗口组件
 			static QString GetMapText(const QMap<quint64,QString>& map,quint64 ckey) {
 				QString text = "";
 				bool first = true;
@@ -62,14 +63,21 @@ namespace GameClient::Tool {
 			pfont->setBold(true);
 			widget->setFont(*pfont);
 		};
-
+		static void InitGameWindows();
 		/// <summary>
 		/// 获取当前卡片存储的图片路径
 		/// </summary>
 		static QString GetImagePath(quint64 code) {
 			return QUtilGetRootPath() + "/Resources/Pics/" + QString::number(code) + ".jpg";
 		}
-
+		static bool HasParent(QWidget* parent, QWidget* child) {
+			QWidget* currentParent = child->parentWidget();
+			while (currentParent != nullptr) {
+				if (currentParent == parent) return true;
+				currentParent = currentParent->parentWidget();
+			}
+			return false;
+		}
 		/// <summary>
 		/// 把正常攻击力转为我们需要的类型
 		/// </summary>
@@ -95,6 +103,14 @@ namespace GameClient::Tool {
 			return GetMapTextList(attributeMap,attribute);
 		}
 
+		/// <summary>
+		/// 获取到程序中最顶层的窗口
+		/// </summary>
+		/// <returns></returns>
+		static QWidget* GetGameRootWidget() {
+			static QWidget* parent = new QWidget;
+			return parent;
+		}
 
 		/// <summary>
 		/// 获取种类文本
@@ -132,6 +148,21 @@ namespace GameClient::Tool {
 			if(value.vtype == ValueType::Undefined) return "?";//?
 			if(value.vtype == ValueType::Infinity) return "\342\210\236"; //∞
 			return QString::number(value.value);
+		}
+
+		/// <summary>
+		/// 激活指定的子窗口
+		/// </summary>
+		/// <returns></returns>
+		static QWidget* ActivateChildWindow(QWidget* parent, quint8 type){
+			QWidget* widget = gameWindows[type];
+			for (QWidget* childWidget : parent->findChildren<QWidget*>()) {
+				if (!HasParent(widget,childWidget)) {
+					childWidget->hide();
+				}
+			}
+			widget->show();
+			return widget;
 		}
 
 		/// <summary>

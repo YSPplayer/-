@@ -16,7 +16,7 @@ namespace GameClient::Component {
 		public:
 			CardSearchScrollArea() {};
 			CardSearchScrollArea(QFont* pfont,QWidget* parent);
-			void LoadCards(QList<ClientCard*> cards);
+			void LoadCards(const QList<ClientCard*>& cards);
 			CScrollArea *scrollArea;//索引栏滚动区域
 		private:
 			QWidget *container;//垂直管理器容器

@@ -19,18 +19,18 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{05CE6505-9B0F-4691-85C6-8843DFA4BCAC}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -92,29 +92,32 @@
     <ClCompile Include="Component\cscrollarea .cpp" />
     <ClCompile Include="Component\cscrollarea.cpp" />
     <ClCompile Include="Core\core.cpp" />
-    <ClCompile Include="gameclientwindow.cpp" />
+    <ClCompile Include="gameclientdeckwindow.cpp" />
+    <ClCompile Include="gamemenuwindow.cpp" />
     <ClCompile Include="Util\qutil.cpp" />
     <QtRcc Include="game.qrc" />
     <QtUic Include="game.ui" />
-    <QtMoc Include="gamewindow.h" />
+    <QtMoc Include="gamedeckwindow.h" />
     <ClCompile Include="Client\clientcard.cpp" />
     <ClCompile Include="Component\cardsearchcontainer.cpp" />
     <ClCompile Include="Component\cardsearchscrollarea.cpp" />
     <ClCompile Include="Component\deckeditcontainer.cpp" />
     <ClCompile Include="Component\imagecard.cpp" />
-    <ClCompile Include="gamewindow.cpp" />
+    <ClCompile Include="gamedeckwindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="menu.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\core.h" />
     <ClInclude Include="Core\coredata.h" />
+    <QtMoc Include="gamemenuwindow.h" />
     <ClInclude Include="Util\util.h" />
     <QtMoc Include="Component\cardsearchcontainer.h" />
     <ClInclude Include="Client\clientcard.h" />
     <ClInclude Include="Component\cardsearchscrollarea.h" />
     <ClInclude Include="Component\cdelegate.h" />
     <QtMoc Include="Component\cscrollarea .h" />
-    <QtMoc Include="gameclientwindow.h" />
+    <QtMoc Include="gameclientdeckwindow.h" />
     <ClInclude Include="Tag\dfcard.h" />
     <ClInclude Include="Tag\dftext.h" />
     <ClInclude Include="Util\qutil.h" />

@@ -4,14 +4,14 @@
 ÎÞÐÞÕý
 */
 #pragma once
-#include "gamewindow.h"
+#include "gamedeckwindow.h"
 namespace GameClient { 
-	class GameClientWindow : public GameWindow {
+	class GameClientDeckWindow : public GameDeckWindow {
 		Q_OBJECT  
 	public:
 		void BindEvent();
-		GameClientWindow(GameWindow *parent = nullptr);
-		~GameClientWindow();
+		GameClientDeckWindow(QWidget *parent = nullptr);
+		~GameClientDeckWindow();
 	private slots:
 		void ScrollingChangeLoadCard();
 	};

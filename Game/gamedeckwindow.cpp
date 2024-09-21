@@ -3,7 +3,7 @@
 创建日期：2024-5-24
 无修正
 */
-#include "gamewindow.h"
+#include "gamedeckwindow.h"
 #include <QGraphicsDropShadowEffect>
 #include <QFontDatabase>
 #include <QBuffer>
@@ -15,7 +15,7 @@ namespace GameClient {
     using namespace GameClient::Tag;
     using namespace GameClient::Tool;
     using namespace GameClient::Client;
-    GameWindow::GameWindow(QWidget *parent)
+    GameDeckWindow::GameDeckWindow(QWidget *parent)
         : QWidget(parent) {
         rootPath = QUtilGetRootPath();
         ui.setupUi(this);
@@ -26,14 +26,14 @@ namespace GameClient {
         SetDeckWinodw();
     }
 
-    GameWindow::~GameWindow() {
+    GameDeckWindow::~GameDeckWindow() {
 
     }
 
     /// <summary>
     /// 设置卡组编辑界面样式
     /// </summary>
-    void GameWindow::SetDeckWinodw() {
+    void GameDeckWindow::SetDeckWinodw() {
         QList<QWidget*> widgets = ui.widget_game_deck->findChildren<QWidget*>();
         for (auto widget : widgets) {
             if(!widget) continue;
@@ -103,17 +103,31 @@ namespace GameClient {
                 widget->setStyleSheet(R"(QLineEdit { color: rgb(199, 195, 195);
                                             background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #4B4B54, stop:1 #272727);
                                              border-radius:3px;})");
+                if(widget == ui.lineEdit_deck_attack || widget == ui.lineEdit_deck_defense) {//限制输入字符
+                    QRegularExpression regex("^-?\\d*|\\?|\\" + QString("\342\210\236") + "$");//整数 ? ∞
+                    QRegularExpressionValidator *validator = new QRegularExpressionValidator(regex, widget);
+                    reinterpret_cast<QLineEdit*>(widget)->setValidator(validator);
+                }
             }
         }
-        mainDeckEditContainer = DeckEditContainer(ui.widget_main_deck,4);
+        mainDeckEditContainer = DeckEditContainer(ui.widget_main_deck,4);// DeckEditContainer::AddImageCard
+        extraDeckEditContainer = DeckEditContainer(ui.widget_extra_deck);
+        /*for(qint32 i = 0; i < 62; ++i) {
+            mainDeckEditContainer.AddImageCard(new ImageCard(QPixmap(QUtilGetRootPath()+ "/Resources/Pics/10000.jpg"),ui.widget_main_deck));
+        }
+        for(qint32 i = 0; i < 16; ++i) {
+            extraDeckEditContainer.AddImageCard(new ImageCard(QPixmap(QUtilGetRootPath()+ "/Resources/Pics/2645637.jpg"),ui.widget_extra_deck));
+        }*/
         cardSearchScrollArea = CardSearchScrollArea(&font,ui.widget_card_search);
-        //cardSearchScrollArea.LoadCards(cards);
+    /*    QList<ClientCard*> cards; 
+        QUtil::LoadDb(QUtilGetRootPath()+ "/Data/cards.cdb",cards);
+        cardSearchScrollArea.LoadCards(cards);*/
     }
 
     /// <summary>
     /// 设置组件多种状态下的样式状态
     /// </summary>
-    void GameWindow::SetWidgetState(quint8 wtype,quint8 stype,QWidget* widget, qint32 size) {
+    void GameDeckWindow::SetWidgetState(quint8 wtype,quint8 stype,QWidget* widget, qint32 size) {
         bool enable = stype == COMPONENT_STATE_COMMON;
         stype == COMPONENT_STATE_DISABLE ? widget->setEnabled(false) : widget->setEnabled(true);
         QColor color = QColor();
@@ -143,7 +157,7 @@ namespace GameClient {
     /// <summary>
     /// 设置映射的UI
     /// </summary>
-    void GameWindow::SetWidgetMap() {
+    void GameDeckWindow::SetWidgetMap() {
         widgetMap[ui.widget_card_des] = { GAME_COMPONENT_WIDGET, &ui.widget_card_des };
         widgetMap[ui.widget_deck_manage] = { GAME_COMPONENT_WIDGET, &ui.widget_deck_manage };
         widgetMap[ui.widget_card_properties] = { GAME_COMPONENT_WIDGET, &ui.widget_card_properties };
@@ -196,7 +210,7 @@ namespace GameClient {
     /// <param name="color"></param>
     /// <param name="inverted"></param>
     /// <param name="size"></param>
-    void GameWindow::SetWidgetShadow(QWidget* widget, const QColor& color, bool inverted, qint32 size) {
+    void GameDeckWindow::SetWidgetShadow(QWidget* widget, const QColor& color, bool inverted, qint32 size) {
         QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect(widget);
         inverted ? effect->setOffset(0, size) : effect->setOffset(0, -size);
         effect->setBlurRadius(size);
@@ -209,7 +223,7 @@ namespace GameClient {
     /// </summary>
     /// <param name="comboBox"></param>
     /// <returns></returns>
-    qint32 GameWindow::GetComboBoxTextCenterValue(QComboBox* comboBox) {
+    qint32 GameDeckWindow::GetComboBoxTextCenterValue(QComboBox* comboBox) {
         qint32 pleft = 0;
         QFontMetrics metrics(comboBox->font());
         qint32 pixelWidth  = metrics.horizontalAdvance(comboBox->currentText());
@@ -222,7 +236,7 @@ namespace GameClient {
     /// </summary>
     /// <param name="widget"></param>
     /// <returns></returns>
-    WidgetInfo GameWindow::GetWidgetInfo(QObject* widget) {
+    WidgetInfo GameDeckWindow::GetWidgetInfo(QObject* widget) {
         if (widgetMap.contains(widget)) return widgetMap[widget];
         return { GAME_COMPONENT_NONE, nullptr };
     }
@@ -233,7 +247,7 @@ namespace GameClient {
     /// <param name="ltype"></param>
     /// <param name="fType"></param>
     /// <returns></returns>
-    QFont GameWindow::LoadFont(LanguageType ltype,FontType fType) {
+    QFont GameDeckWindow::LoadFont(LanguageType ltype,FontType fType) {
         QString fpath = rootPath + "/Resources/Font/";
         if (ltype == LanguageType::zh_CN) {
             if (fType == FontType::YoungRound_CN) fpath += "YoungRound_CN.TTF";
